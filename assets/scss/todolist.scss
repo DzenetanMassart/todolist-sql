@@ -1,7 +1,13 @@
-.liste {
-    color: blue;
-}
-
-.termined {
-    color: blue;
+form {
+    width: 5vw;
+    .liste {
+        .nodone {
+            color: blue;
+        }
+    }
+    .termined {
+        .done {
+            color: blue;
+        }
+    }
 }

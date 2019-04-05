@@ -1,4 +1,6 @@
-.liste { color: blue; }
+form { width: 5vw; }
 
-.termined { color: blue; }
+form .liste .nodone { color: blue; }
+
+form .termined .done { color: blue; }
 /*# sourceMappingURL=todolist.css.map */
