@@ -1,13 +1,19 @@
 <?php
 /* Cette page sert à mettre à jour le tableau */
-require 'connect.php';
+include 'connect.php';
+
+if($_POST['enregistrer']){
+    $requete->exec("INSERT INTO taches(id,texte) VALUES ('',$_POST[plusTache]);");
+}
+
+
+
 if (isset($_POST['retire'])) {
-    
     try
     {
         $bdd->beginTransaction();
         $push = $bdd->prepare("
-            DELETE FROM tâches 
+            DELETE FROM taches 
             WHERE id = :id
         ");
         foreach ($_POST as $value) {
@@ -25,7 +31,7 @@ if (isset($_POST['retire'])) {
     {
         $bdd->beginTransaction();
         $push = $bdd->prepare("
-            UPDATE tâches
+            UPDATE taches
             SET statut = 1 
             WHERE id = :id 
         ");

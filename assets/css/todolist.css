@@ -1,6 +1,18 @@
-form { width: 5vw; }
+header { width: 100%; }
 
-form .liste .nodone { color: blue; }
+header h1 { text-align: center; font-size: 6.2vw; }
 
-form .termined .done { color: blue; }
+section { left: 30vw; position: absolute; }
+
+section h2 { font-size: 5.0vw; }
+
+section input { font-size: 2vw; }
+
+section form .liste { margin: auto auto !important; display: inline-block; border-bottom: red 2px solid; }
+
+section form .liste .nodone { color: blue; }
+
+section form .termined { margin: auto auto !important; display: inline-block; border-bottom: red 2px solid; }
+
+section form .termined .done { color: grey; }
 /*# sourceMappingURL=todolist.css.map */
