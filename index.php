@@ -39,7 +39,6 @@ require 'assets/php/connect.php';
 				?>
 
 				<input type="submit" value="Conserver" name="conserve">
-				<input type="submit" value="Retirer" name="retire">
 			</form>
 		</div>
 
