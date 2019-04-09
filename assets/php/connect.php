@@ -4,6 +4,7 @@
 try
 {
 	$bdd = new PDO('mysql:host=localhost;dbname=todolist;charset=utf8', 'massart', 'user');
+	echo "test";
 }
 catch(Exception $e)
 {

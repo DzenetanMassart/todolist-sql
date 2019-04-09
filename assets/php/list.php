@@ -20,6 +20,7 @@ try
     $bdd->rollback();
 }
 
+header('Location: ../../index.php');
 
 
 ?>

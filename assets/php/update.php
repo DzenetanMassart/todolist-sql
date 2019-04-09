@@ -1,9 +1,12 @@
 <?php
 /* Cette page sert à mettre à jour le tableau */
 include 'connect.php';
+$tache=$_POST['plusTache'];
+echo $tache;
+
 
 if($_POST['enregistrer']){
-    $requete->exec("INSERT INTO taches(id,texte) VALUES ('',$_POST[plusTache]);");
+    $bdd->exec("INSERT INTO taches(texte) VALUES ('".$tache."')");
 }
 
 
@@ -32,7 +35,7 @@ if (isset($_POST['retire'])) {
         $bdd->beginTransaction();
         $push = $bdd->prepare("
             UPDATE taches
-            SET statut = 1 
+            SET id = 1 
             WHERE id = :id 
         ");
         foreach ($_POST as $value) {
@@ -46,7 +49,7 @@ if (isset($_POST['retire'])) {
         $bdd->rollback();
     }
 }
-header('Location: ../index.php');
+header('Location: ../../index.php');
 
 
 

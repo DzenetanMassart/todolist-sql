@@ -1,6 +1,6 @@
 <?php
 require 'assets/php/connect.php';
-	require 'assets/php/affichage.php';
+	// require 'assets/php/affichage.php';
 ?>
 
 <!Doctype html>
@@ -10,7 +10,6 @@ require 'assets/php/connect.php';
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/todolist.css">
-
 </head>
 <body>
 
@@ -24,7 +23,20 @@ require 'assets/php/connect.php';
 			<h2>Tâches à réaliser</h2>
 			<form action="assets/php/list.php" method="POST">
 				
-				<?php echo $en_cours; ?>
+				<?php 
+				
+				$resultat = $bdd->query('SELECT * FROM taches');
+				while ($donnees = $resultat->fetch()){
+					echo 
+					         '<div>
+					         <input type="checkbox" id="'.$donnees['id'].'" name="'.$donnees['id'].'"" value="'.$donnees['id'].'">
+					         <label for="'.$donnees['id'].'" class="nodone">
+					         '.$donnees['id'].' <i class="fas fa-arrow-circle-right"></i> '.$donnees['texte'].'
+					         </label>
+					         </div>';
+				}
+				
+				?>
 
 				<input type="submit" value="Conserver" name="conserve">
 				<input type="submit" value="Retirer" name="retire">
