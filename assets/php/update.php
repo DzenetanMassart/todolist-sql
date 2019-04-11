@@ -12,4 +12,12 @@ header('Location: ../../index.php');
 
 
 
+ 
+if(isset($_POST['retire'])){
+	$count=count($_POST['retire']);
+	for($i=0;$i<$count;$i++){
+		$req_del="DELETE FROM $tache WHERE statut='".$_POST['retire'][$i]."';";
+		mysql_query($req_del);
+	}
+}
 ?>

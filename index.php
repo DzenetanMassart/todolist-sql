@@ -38,7 +38,7 @@ require 'assets/php/connect.php';
 				
 				?>
 
-				<input type="submit" value="Conserver" name="conserve">
+				<input class="font_awesome " type="submit" value=" Archiver" name="conserve">
 			</form>
 		</div>
 
@@ -48,15 +48,28 @@ require 'assets/php/connect.php';
 
 			<form action="assets/php/update.php" method="POST">
 				
-				<?php echo $termined; ?>
+			<?php 
+				
+				$conserver = $bdd->query('SELECT * FROM taches WHERE statut=1');
+				while ($termined = $conserver->fetch()){
+					echo 
+					         '<div>
+					         <input type="checkbox" id="'.$termined['id'].'" name="'.$termined['id'].'"" value="'.$termined['id'].'">
+					         <label for="'.$termined['id'].'" class="done">
+					         '.$termined['id'].' <i class="fas fa-arrow-circle-right"></i> '.$termined['texte'].'
+					         </label>
+					         </div>';
+				}
+				
+				?>
 
-				<input type="submit" value="Retirer" name="retire">
+				<input class="font_awesome"  type="submit" value="Supprimer" name="retire">
 			</form>
 		</div>
 
 		<form action="assets/php/update.php" method="POST">			
             <textarea placeholder="Ajouter une tache" name="plusTache" class="tache" rows="1" cols="33"></textarea>
-            <input type="submit" value="Enregistrer" class="submit" name="enregistrer">
+            <input class="font_awesome"  type="submit" value="Enregistrer" class="submit" name="enregistrer">
 		</form>
 
 	</section>
