@@ -25,12 +25,12 @@ require 'assets/php/connect.php';
 				
 				<?php 
 				
-				$resultat = $bdd->query('SELECT * FROM taches');
+				$resultat = $bdd->query('SELECT * FROM taches WHERE statut=0');
 				while ($donnees = $resultat->fetch()){
 					echo 
 					         '<div>
-					         <input type="checkbox" id="'.$donnees['id'].'" name="'.$donnees['id'].'"" value="'.$donnees['id'].'">
-					         <label for="'.$donnees['id'].'" class="nodone">
+					         <input type="checkbox" id="checkbox'.$donnees['id'].'" name="UNDONE[]"" value="'.$donnees['id'].'">
+					         <label for="checkbox'.$donnees['id'].'" class="nodone">
 					         '.$donnees['id'].' <i class="fas fa-arrow-circle-right"></i> '.$donnees['texte'].'
 					         </label>
 					         </div>';
@@ -38,7 +38,7 @@ require 'assets/php/connect.php';
 				
 				?>
 
-				<input class="font_awesome " type="submit" value=" Archiver" name="conserve">
+				<input type="submit" value="Archiver" name="conserve">
 			</form>
 		</div>
 
@@ -54,8 +54,8 @@ require 'assets/php/connect.php';
 				while ($termined = $conserver->fetch()){
 					echo 
 					         '<div>
-					         <input type="checkbox" id="'.$termined['id'].'" name="'.$termined['id'].'"" value="'.$termined['id'].'">
-					         <label for="'.$termined['id'].'" class="done">
+					         <input type="checkbox" id="checkbox'.$termined['id'].'" name="DONE[]"" value="'.$termined['id'].'">
+					         <label for="checkbox'.$termined['id'].'" class="done">
 					         '.$termined['id'].' <i class="fas fa-arrow-circle-right"></i> '.$termined['texte'].'
 					         </label>
 					         </div>';
@@ -63,13 +63,13 @@ require 'assets/php/connect.php';
 				
 				?>
 
-				<input class="font_awesome"  type="submit" value="Supprimer" name="retire">
+				<input  type="submit" value="Supprimer" name="retire">
 			</form>
 		</div>
 
 		<form action="assets/php/update.php" method="POST">			
             <textarea placeholder="Ajouter une tache" name="plusTache" class="tache" rows="1" cols="33"></textarea>
-            <input class="font_awesome"  type="submit" value="Enregistrer" class="submit" name="enregistrer">
+            <input  type="submit" value="Enregistrer" class="submit" name="enregistrer">
 		</form>
 
 	</section>
