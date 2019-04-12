@@ -27,10 +27,11 @@ require 'assets/php/connect.php';
 				
 				$resultat = $bdd->query('SELECT * FROM taches WHERE statut=0');
 				while ($donnees = $resultat->fetch()){
+
 					echo 
-					         '<div>
-					         <input type="checkbox" id="checkbox'.$donnees['id'].'" name="UNDONE[]"" value="'.$donnees['id'].'">
-					         <label for="checkbox'.$donnees['id'].'" class="nodone">
+					         '<div class="nodone">
+					         <input type="checkbox" id="checkbox'.$donnees['id'].'" name="UNDONE[]"" value="'.$donnees['texte'].'">
+					         <label for="checkbox'.$donnees['id'].'" >
 					         '.$donnees['id'].' <i class="fas fa-arrow-circle-right"></i> '.$donnees['texte'].'
 					         </label>
 					         </div>';
@@ -39,6 +40,8 @@ require 'assets/php/connect.php';
 				?>
 
 				<input type="submit" value="Archiver" name="conserve">
+				<input type="submit" value="Archiver TOUT" name="conserve_tout">
+
 			</form>
 		</div>
 
@@ -52,10 +55,11 @@ require 'assets/php/connect.php';
 				
 				$conserver = $bdd->query('SELECT * FROM taches WHERE statut=1');
 				while ($termined = $conserver->fetch()){
+
 					echo 
-					         '<div>
-					         <input type="checkbox" id="checkbox'.$termined['id'].'" name="DONE[]"" value="'.$termined['id'].'">
-					         <label for="checkbox'.$termined['id'].'" class="done">
+					         '<div class="done">
+					         <input type="checkbox" id="checkbox'.$termined['id'].'" name="DONE[]"" value="'.$termined['texte'].'">
+					         <label for="checkbox'.$termined['id'].'" >
 					         '.$termined['id'].' <i class="fas fa-arrow-circle-right"></i> '.$termined['texte'].'
 					         </label>
 					         </div>';
@@ -64,6 +68,8 @@ require 'assets/php/connect.php';
 				?>
 
 				<input  type="submit" value="Supprimer" name="retire">
+				<input  type="submit" value="Supprimer TOUT" name="retire_tout">
+
 			</form>
 		</div>
 

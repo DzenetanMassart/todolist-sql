@@ -8,16 +8,21 @@ echo $tache;
 if($_POST['enregistrer']){
     $bdd->exec("INSERT INTO taches(texte,statut) VALUES ('".$tache."',0)");
 }
-header('Location: ../../index.php');
-
-
-
+ 
  
 if(isset($_POST['retire'])){
-	$count=count($_POST['retire']);
-	for($i=0;$i<$count;$i++){
-		$req_del="DELETE FROM $tache WHERE statut='".$_POST['retire'][$i]."';";
-		mysql_query($req_del);
-	}
-}
+ 
+    $checkbox_cocheesuppr=$_POST['DONE'];
+	$bdd->exec("DELETE FROM taches 
+	WHERE texte='$checkbox_cocheesuppr'");
+};
+
+if(isset($_POST['retire_tout'])){
+ 
+    $checkbox_cocheesuppr=$_POST['DONE'];
+	$bdd->exec("DELETE FROM taches WHERE statut=1");
+};
+
+header('Location: ../../index.php');
+
 ?>
