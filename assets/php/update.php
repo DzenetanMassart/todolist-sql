@@ -1,26 +1,27 @@
 <?php
+//montre les erreurs
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 /* Cette page sert à mettre à jour le tableau */
 include 'connect.php';
 $tache=$_POST['plusTache'];
-echo $tache;
 
 
-if($_POST['enregistrer']){
+if($_POST['enregistrer'])
+{
     $bdd->exec("INSERT INTO taches(texte,statut) VALUES ('".$tache."',0)");
-}
- 
- 
-if(isset($_POST['retire'])){
- 
-    $checkbox_cocheesuppr=$_POST['DONE'];
-	$bdd->exec("DELETE FROM taches 
-	WHERE texte='$checkbox_cocheesuppr'");
-};
+$fait=$_POST['DONE[]'];
 
-if(isset($_POST['retire_tout'])){
- 
-    $checkbox_cocheesuppr=$_POST['DONE'];
-	$bdd->exec("DELETE FROM taches WHERE statut=1");
+    foreach($fait as $inc)
+    {
+        $bdd->exec("DELETE FROM taches WHERE id = " .$inc) ;
+   };
+}
+
+if(isset($_POST['retire_tout']))
+{
+    $bdd->exec("DELETE FROM taches WHERE statut=1");
 };
 
 header('Location: ../../index.php');

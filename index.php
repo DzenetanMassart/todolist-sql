@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require 'assets/php/connect.php';
 	// require 'assets/php/affichage.php';
 ?>
@@ -30,7 +33,7 @@ require 'assets/php/connect.php';
 
 					echo 
 					         '<div class="nodone">
-					         <input type="checkbox" id="checkbox'.$donnees['id'].'" name="UNDONE[]"" value="'.$donnees['texte'].'">
+					         <input type="checkbox" id="checkbox'.$donnees['id'].'" name="UNDONE[]" value="'.$donnees['id'].'">
 					         <label for="checkbox'.$donnees['id'].'" >
 					         '.$donnees['id'].' <i class="fas fa-arrow-circle-right"></i> '.$donnees['texte'].'
 					         </label>

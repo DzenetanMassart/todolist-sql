@@ -1,33 +1,23 @@
 <?php
+//montre les erreurs
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 /* cette page sert à gérer la liste des tâches en cours */
 include 'connect.php';
-try{
 
-    if(isset($_POST['conserve']))
-{
- 
-    $checkbox_cochee=$_POST['UNDONE'];
-    $bdd->exec("UPDATE taches 
-    SET statut='1'
-    WHERE texte='$checkbox_cochee'
+if(isset($_POST['conserve']))
+{$pas_fait=$_POST['UNDONE'];
 
-");}
+    foreach($pas_fait as $inc){
+    $values = ['statut' => '1'];
+    $bdd->exec("UPDATE taches SET statut=:statut WHERE id =".$inc);
 
-
+    $bdd->exec($values);
+   };
+};
     if(isset($_POST['conserve_tout']))
-{
-     $bdd->exec("UPDATE taches 
-    SET statut='1'
-
-");}
-
-} catch(Exception $e) {
-    echo 'Erreur : ' . $e->getMessage();
-    $bdd->rollback();
-}
-
-
+{$bdd->exec("UPDATE taches SET statut=1");}
 header('Location: ../../index.php');
-
 
 ?>
