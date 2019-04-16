@@ -14,11 +14,13 @@ if(isset($_POST['UNDONE']))
     foreach($pas_fait as $inc){
     $values = ['statut' => '1'];
     $bdd->exec("UPDATE taches SET statut=:statut WHERE id =".$inc);
-
     $bdd->exec($values);
    };
 };
 };
+
+ 
+
     if(isset($_POST['conserve_tout']))
 {$bdd->exec("UPDATE taches SET statut=1");}
 
