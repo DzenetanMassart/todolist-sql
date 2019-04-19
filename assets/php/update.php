@@ -11,13 +11,22 @@ $tache=$_POST['plusTache'];
 if($_POST['enregistrer'])
 {
     $bdd->exec("INSERT INTO taches(texte,statut) VALUES ('".$tache."',0)");
-$fait=$_POST['DONE'];
-
-    foreach($fait as $inc)
-    {
-        $bdd->exec("DELETE FROM taches WHERE id = " .$inc) ;
-   };
 }
+
+
+
+if(isset($_POST['retire'])){
+
+    if(isset($_POST['DONE']))
+    
+    {$fait=$_POST['DONE'];
+    
+        $request = $bdd->prepare("DELETE FROM taches WHERE id =:id");
+        foreach($fait as $ii){
+            $request->execute(array(":id" => $ii));
+       };
+    };
+    };
 
 
 

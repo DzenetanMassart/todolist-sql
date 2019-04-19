@@ -7,18 +7,16 @@ error_reporting(E_ALL);
 include 'connect.php';
 
 if(isset($_POST['conserve'])){
-if(isset($_POST['UNDONE']))
 
-{$pas_fait=$_POST['UNDONE'];
-
+if(isset($_POST['UNDONE'])){
+    $pas_fait=$_POST['UNDONE'];
+    
+    $req = $bdd->prepare("UPDATE taches SET statut='1' WHERE id =:id");
     foreach($pas_fait as $inc){
-    $values = ['statut' => '1'];
-    $bdd->exec("UPDATE taches SET statut=:statut WHERE id =".$inc);
-    $bdd->exec($values);
+        $req->execute(array(":id" => $inc));
    };
 };
 };
-
  
 
     if(isset($_POST['conserve_tout']))

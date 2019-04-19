@@ -35,7 +35,7 @@ require 'assets/php/connect.php';
 
 					echo 
 					         '<div class="nodone">
-					         <input type="checkbox" id="checkbox'.$donnees['id'].'" name="UNDONE" value="'.$donnees['id'].'">
+					         <input type="checkbox" id="checkbox'.$donnees['id'].'" name="UNDONE[]" value="'.$donnees['id'].'">
 					         <label for="checkbox'.$donnees['id'].'" >
 					         '.$donnees['id'].' <i class="fas fa-arrow-circle-right"></i> '.$donnees['texte'].'
 					         </label>
@@ -63,7 +63,7 @@ require 'assets/php/connect.php';
 
 					echo 
 					         '<div class="done">
-					         <input type="checkbox" id="checkbox'.$termined['id'].'" name="DONE" value="'.$termined['texte'].'">
+					         <input type="checkbox" id="checkbox'.$termined['id'].'" name="DONE[]" value="'.$termined['texte'].'">
 					         <label for="checkbox'.$termined['id'].'" >
 					         '.$termined['id'].' <i class="fas fa-arrow-circle-right"></i> '.$termined['texte'].'
 					         </label>
